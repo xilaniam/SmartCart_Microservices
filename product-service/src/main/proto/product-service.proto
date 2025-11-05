@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "product";
+
+service ProductService {
+  rpc getProductById(GetProductRequest) returns (GetProductResponse);
+  rpc updateStock(UpdateStockRequest) returns (UpdateStockResponse);
+}
+
+message GetProductRequest{
+  string productId = 1;
+}
+
+message GetProductResponse{
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string inventoryCount = 4;
+  string price = 5;
+}
+
+message UpdateStockRequest{
+  string id = 1;
+  int32 delta = 2;
+}
+
+message UpdateStockResponse{
+  string id = 1;
+  int32 inventoryCount = 2;
+  string message = 3;
+}

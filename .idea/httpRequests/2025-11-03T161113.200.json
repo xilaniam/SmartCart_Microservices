@@ -1,0 +1,15 @@
+{
+  "orderId": "ecfff321-9aaa-4ba8-a1cb-1b0905b09c6a",
+  "status": "ORDERING",
+  "totalAmount": "17749.05",
+  "items": [
+    {
+      "productId": "211e4567-e89b-12d3-a456-426614174014",
+      "quantity": 10
+    },
+    {
+      "productId": "211e4567-e89b-12d3-a456-426614174013",
+      "quantity": 85
+    }
+  ]
+}

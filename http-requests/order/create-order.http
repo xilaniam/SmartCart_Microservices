@@ -1,0 +1,19 @@
+POST http://localhost:2002/order/223e4567-e89b-12d3-a456-426614174006
+Content-Type: application/json
+
+{
+  "orderList": [
+    {
+      "productId": "211e4567-e89b-12d3-a456-426614174013",
+      "quantity": 1
+    },
+    {
+      "productId": "211e4567-e89b-12d3-a456-426614174019",
+      "quantity": 2
+    }
+  ],
+  "status": "ORDERING",
+  "createdAt": "2025-02-03",
+  "totalAmount" : "1050",
+  "updatedAt": "2025-02-03"
+}

@@ -1,0 +1,7 @@
+PUT localhost:2001/product/211e4567-e89b-12d3-a456-426614174000
+Content-Type: application/json
+
+{
+  "price": "500",
+  "updatedAt": "2025-10-31"
+}

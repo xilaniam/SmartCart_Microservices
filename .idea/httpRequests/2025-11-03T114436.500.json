@@ -1,0 +1,6 @@
+{
+  "timestamp": "2025-11-03T05:59:36.076+00:00",
+  "status": 500,
+  "error": "Internal Server Error",
+  "path": "/order/223e4567-e89b-12d3-a456-426614174006"
+}

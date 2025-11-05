@@ -1,0 +1,11 @@
+POST localhost:2001/product
+Content-Type: application/json
+
+{
+  "name": "Wireless Mouse v993212",
+  "description": "Ergonomic ",
+  "price": "29.99",
+  "inventoryCount": "150",
+  "createdAt": "2025-10-30",
+  "updatedAt": ""
+}

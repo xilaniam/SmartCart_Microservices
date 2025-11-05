@@ -1,0 +1,15 @@
+{
+  "orderId": "aaf82b8a-fae6-4dea-aa3a-ff47d2dfb9fd",
+  "status": "ORDERING",
+  "totalAmount": "0",
+  "items": [
+    {
+      "productId": "211e4567-e89b-12d3-a456-426614174014",
+      "quantity": 10
+    },
+    {
+      "productId": "211e4567-e89b-12d3-a456-426614174013",
+      "quantity": 20
+    }
+  ]
+}

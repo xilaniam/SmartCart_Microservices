@@ -1,0 +1,8 @@
+POST http://localhost:2000/customer
+Content-Type: application/json
+
+{
+  "name": "Ram",
+  "email": "Ram@gm.com",
+  "createdAt": "2025-05-29"
+}

@@ -1,0 +1,20 @@
+server:
+  port: 7000
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: customer-service-route
+          uri: http://customer-service:2000
+          predicates:
+            - Path=/api/customer/**
+          filter:
+            - StripPrefix=1
+
+        - id: order-service-route
+          uri: http://order-service:2001
+          predicates:
+            - Path=/api/order/**
+          filter:
+            - StripPrefix=1
