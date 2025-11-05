@@ -1,4 +1,4 @@
-POST http://localhost:2002/order/223e4567-e89b-12d3-a456-426614174006
+POST http://localhost:7000/api/order/223e4567-e89b-12d3-a456-426614174006
 Content-Type: application/json
 
 {
