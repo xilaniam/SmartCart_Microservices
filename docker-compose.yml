@@ -1,0 +1,116 @@
+services:
+  #----------------databases-----------------#
+  customer-db:
+    image: postgres:latest
+    container_name: customer-service-db
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - 5002:5432
+    volumes:
+      - C:\Users\hp\db_volumes\customer-service-db:/var/lib/postgres/data
+    networks:
+      -internal
+
+  product-db:
+    image: postgres:latest
+    container_name: product-service-db
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - 5003:5432
+    volumes:
+      - C:\Users\hp\db_volumes\product-service-db:/var/lib/postgres/data
+    networks:
+      -internal
+
+  order-db:
+    image: postgres:latest
+    container_name: order-service-db
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - 5003:5432
+    volumes:
+      - C:\Users\hp\db_volumes\order-service-db:/var/lib/postgres/data
+    networks:
+      -internal
+  #----------------services-----------------#
+  customer-service:
+    build:
+      context: ./customer-service
+      dockerfile: Dockerfile
+    container_name: customer-service
+    depends_on:
+      - customer-service-db
+    expose:
+      -2000:2000
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://customer-service-db:5432/${DB_NAME}
+      - SPRING_DATASOURCE_USERNAME=${DB_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=${HIBERNATE_DDL_AUTO}
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
+      - SPRING_SQL_INIT_MODE=${SQL_INIT_MODE}
+    networks:
+      - internal
+
+  product-service:
+    build:
+      context: ./product-service
+      dockerfile: Dockerfile
+    container_name: product-service
+    depends_on:
+      - product-service-db
+    expose:
+      -2001:2001
+      -6001:6001
+    environment:
+      - GRPC_SERVER_PORT=6001
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://customer-service-db:5432/${DB_NAME}
+      - SPRING_DATASOURCE_USERNAME=${DB_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=${HIBERNATE_DDL_AUTO}
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
+      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.PostgreSQLDialect
+      - SPRING_SQL_INIT_MODE=${SQL_INIT_MODE}
+    networks:
+      - internal
+
+  order-service:
+    build:
+      context: ./order-service
+      dockerfile: Dockerfile
+    container_name: order-service
+    depends_on:
+      - order-service-db
+    expose:
+      -2002:2002
+    environment:
+      - PRODUCT_SERVICE_ADDRESS=product-service
+      - PRODUCT_SERVICE_GRPC_PORT=6001
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://order-service-db:5432/${DB_NAME}
+      - SPRING_DATASOURCE_USERNAME=${DB_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=${HIBERNATE_DDL_AUTO}
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
+      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.PostgreSQLDialect
+      - SPRING_SQL_INIT_MODE=${SQL_INIT_MODE}
+    networks:
+      - internal
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    ports:
+      -7000:7000
+    networks:
+      - internal

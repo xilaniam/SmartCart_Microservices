@@ -13,8 +13,15 @@ spring:
             - StripPrefix=1
 
         - id: order-service-route
-          uri: http://order-service:2001
+          uri: http://order-service:2002
           predicates:
             - Path=/api/order/**
+          filter:
+            - StripPrefix=1
+
+        - id: product-service-route
+          uri: http://order-service:2001
+          predicates:
+            - Path=/api/product/**
           filter:
             - StripPrefix=1
