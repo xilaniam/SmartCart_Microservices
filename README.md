@@ -24,7 +24,6 @@ The repository includes the following modules:
 
 ## ✅ Getting Started  
 Follow these steps to get the project running locally:
-
 1. Clone the repository:  
    git clone https://github.com/xilaniam/SmartCart_Microservices.git
    cd SmartCart_Microservices
