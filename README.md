@@ -37,11 +37,12 @@ Follow these steps to get the project running locally:
 4.Visit the API gateway (by default):
 http://localhost:7000
 
-🔍 Usage & Examples
+## 🔍 Usage & Examples
 The usage and examples are on the http-request folder
 
-📝 Project Status & Roadmap
+## 📝 Project Status & Roadmap
 Current status: Prototype.
+
 Planned next steps:
 
 🔲 Kafka
@@ -54,8 +55,8 @@ Planned next steps:
 
 🔲 Add deployment pipeline (GitHub Actions / Jenkins)
 
-👥 Contributing
+## 👥 Contributing
 Contributions are welcome! To contribute:
 
-📄 License
+## 📄 License
 This project is licensed under the MIT License.
